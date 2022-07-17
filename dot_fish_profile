@@ -1,0 +1,13 @@
+set -x DEVKITPRO /opt/devkitpro
+set -x DEVKITARM /opt/devkitpro/devkitARM
+set -x DEVKITPPC /opt/devkitpro/devkitPPC
+
+set -x FLUTTER_HOME /opt/flutter
+
+#set -x QT_QPA_PLATFORMTHEME qt5ct
+
+fish_add_path $FLUTTER_HOME/bin
+
+fish_add_path $DEVKITPRO/tools/bin
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.emacs.d/bin
