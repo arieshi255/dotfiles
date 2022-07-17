@@ -1,0 +1,8 @@
+#
+# ~/.bash_profile
+#
+
+#export QT_QPA_PLATFORMTHEME=qt5ct
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+#source "/home/lucy/emsdk/emsdk_env.sh"
