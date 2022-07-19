@@ -6,4 +6,4 @@ export MAIL=thunderbird
 export TERM=xterm
 export VISUAL=kate
 export ANDROID_SDK="$HOME/Android/Sdk"
-#export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt5ct

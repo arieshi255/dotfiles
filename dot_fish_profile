@@ -4,7 +4,7 @@ set -x DEVKITPPC /opt/devkitpro/devkitPPC
 
 set -x FLUTTER_HOME /opt/flutter
 
-#set -x QT_QPA_PLATFORMTHEME qt5ct
+set -x QT_QPA_PLATFORMTHEME qt5ct
 
 fish_add_path $FLUTTER_HOME/bin
 

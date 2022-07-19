@@ -70,7 +70,7 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "urxvtd", "unclutter -root" }) -- comma-separated entries
+run_once({ "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", "unclutter -root", os.getenv("HOME") .. "/pipewire.sh up" })
 
 -- This function implements the XDG autostart specification
 --[[
@@ -99,7 +99,7 @@ local themes = {
     "vertex"           -- 10
 }
 
-local chosen_theme = themes[7]
+local chosen_theme = themes[6]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "kitty"
@@ -144,6 +144,15 @@ lain.layout.cascade.tile.offset_y      = 32
 lain.layout.cascade.tile.extra_padding = 5
 lain.layout.cascade.tile.nmaster       = 5
 lain.layout.cascade.tile.ncol          = 2
+
+-- {{{ Awesome switcher
+switcher.settings.preview_box_bg = "#282A36AA";                       -- background color
+switcher.settings.preview_box_border = "#30323FBB";                   -- border-color
+switcher.settings.client_opacity = false;                             -- opacity for unselected clients
+switcher.settings.client_opacity_value = 0.5;                         -- alpha-value for any client
+switcher.settings.client_opacity_value_in_focus = 0.5;                -- alpha-value for the client currently in focus
+switcher.settings.client_opacity_value_selected = 1;                  -- alpha-value for the selected client
+-- }}}
 
 awful.util.taglist_buttons = mytable.join(
     awful.button({ }, 1, function(t) t:view_only() end),
@@ -368,7 +377,6 @@ globalkeys = mytable.join(
             end
         end,
         {description = "cycle with previous/go back", group = "client"}),
-
 	awful.key({ altkey,			  }, "Tab",
 		function()
 			switcher.switch(1, altkey, "Alt_L", "Shift", "Tab")
@@ -840,6 +848,6 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 awful.spawn.with_shell("lxsession")
-awful.spawn.with_shell("picom")
+awful.spawn.with_shell("picom --experimental-backends")
 
 -- }}}
