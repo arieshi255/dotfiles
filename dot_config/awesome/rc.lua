@@ -70,8 +70,6 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", "unclutter -root", os.getenv("HOME") .. "/pipewire.sh up" })
-
 -- This function implements the XDG autostart specification
 --[[
 awful.spawn.with_shell(
@@ -847,7 +845,9 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-awful.spawn.with_shell("lxsession")
-awful.spawn.with_shell("picom --experimental-backends")
+-- Spawn session, compositor and polkit
+awful.spawn.once("lxsession")
+awful.spawn.once("picom --experimental-backends")
+awful.spawn.once("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 
 -- }}}
