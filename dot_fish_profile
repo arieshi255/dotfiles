@@ -6,6 +6,8 @@ set -x FLUTTER_HOME /opt/flutter
 
 set -x QT_QPA_PLATFORMTHEME qt5ct
 
+set -x LOCALE_ARCHIVE /usr/lib/locale/locale-archive
+
 fish_add_path $FLUTTER_HOME/bin
 
 fish_add_path $DEVKITPRO/tools/bin
